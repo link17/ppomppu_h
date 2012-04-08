@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, PpomPpuActivity!</string>
+    <string name="app_name">PpomPpu</string>
+	<string name="realtime_action">com.kth.realtime.action</string>
+	<string name="shoping_action">com.kth.shoping.action</string>
+	<string name="shoping_hint">원하시는 품목의 최소가를 입력해주세요.</string>
+	<string name="search_btn_text">검색</string>
+	
+ 
+    <!-- view -->
+    <string name="title_real_time_search_title">실시간 검색순위</string>
+    <string name="comment_default_real_time_search_result">1. 김여종 겁나 멋져 ㅋㅋㅋ</string>
+    <string name="comment_search_keyword_hint">검색어를 입력하세요.</string>
+    <string name="action.APPWIDGET_UPDATE">android.appwidget.action.APPWIDGET_UPDATE</string>
+</resources>

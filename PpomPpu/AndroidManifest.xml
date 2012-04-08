@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kth.ppomppu"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".activity.PpomPpuActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service android:name=".service.PpomPpuService" >
+            <intent-filter>
+                <action android:name="@string/shoping_action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="@string/realtime_action" />
+            </intent-filter>
+        </service>
+
+        <provider
+            android:name=".database.PpomppuContentProvider"
+            android:authorities="com.kth.ppomppu.povider"
+            android:readPermission="com.kth.ppomppu.povider.Permission.READ"
+            android:writePermission="com.kth.ppomppu.povider.Permission.WRITE" >
+        </provider>
+
+        <receiver
+            android:name="com.kth.ppomppu.appwidget.PpomppuAppWidget"
+            >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.kth.appwidget.action.UPDATE_RANK" />
+            </intent-filter>
+            
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidget_info" />
+        </receiver>
+    </application>
+
+    <!-- Network permission -->
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+
+</manifest>
