@@ -64,6 +64,7 @@ public class PContentObserver extends ContentObserver {
 				PpomppuContentProvider.REALTIME_URI, null, null, null, null);
 
 		String ranking = "";
+		Log.d("HONG", "realtimeFun");
 
 		if (cursor != null && cursor.moveToFirst()) {
 
@@ -79,7 +80,6 @@ public class PContentObserver extends ContentObserver {
 					ranking = cursor.getString(i+1);
 					
 					rankArr[i] = ranking;
-					Log.d("TAG", "title = " + ranking);
 				}
 				count++;
 				

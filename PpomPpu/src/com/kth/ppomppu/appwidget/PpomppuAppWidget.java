@@ -3,11 +3,14 @@ package com.kth.ppomppu.appwidget;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
+import android.database.ContentObserver;
 import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -20,7 +23,8 @@ public class PpomppuAppWidget extends AppWidgetProvider {
 	public static String APPWIDGET_ACION = "com.kth.appwidget.action.UPDATE_RANK";
 	public static String RANK_KEY = "rank_key";
 	private int[] mAppId;
-
+	private ContentObserver calendarInstancesObserver;
+	
 	public PpomppuAppWidget() {
 		// TODO Auto-generated constructor stub
 	}
@@ -28,17 +32,41 @@ public class PpomppuAppWidget extends AppWidgetProvider {
 	@Override
 	public void onEnabled(Context context) {
 		// TODO Auto-generated method stub
-
+		/*
 		PackageManager pm = context.getPackageManager();
 		pm.setComponentEnabledSetting(new ComponentName(
 				"com.kth.ppomppu.appwidget", ".PpomppuAppWidget"),
 				PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
 				PackageManager.DONT_KILL_APP);
-
+*/
+		
+		registerContentObserver(context); 
 		// super.onEnabled(context);
 
 	}
 
+	
+	private void registerContentObserver(final Context context) {  
+	    if (calendarInstancesObserver == null) {  
+	        final ComponentName name = new ComponentName(context, this.getClass());  
+	  
+	        calendarInstancesObserver = new ContentObserver(new Handler()) {  
+	            @Override  
+	            public void onChange(boolean selfChange) {  
+	            	Log.d("HONG", "onChange  " + selfChange);
+	            	
+	                AppWidgetManager m = AppWidgetManager.getInstance(context);  
+	                int[] ids = m.getAppWidgetIds(name);  
+	                onUpdate(context, m, ids);  
+	            }  
+	        };  
+	    }  
+	    String uriString = "content://com.android.calendar";  
+	    Uri instancesUri = Uri.parse(uriString);  
+	    ContentResolver cr = context.getContentResolver();  
+	    cr.registerContentObserver(PpomppuContentProvider.REALTIME_URI, true, calendarInstancesObserver);  
+	}  
+	
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
@@ -129,7 +157,11 @@ public class PpomppuAppWidget extends AppWidgetProvider {
 				//sendMessage(rankArr);
 			}
 
-			views.setTextViewText(R.id.tv_appwidget_1, rankArr[i]);
+			views.setTextViewText(R.id.tv_appwidget_1, "<1위> "+rankArr[0]);
+			views.setTextViewText(R.id.tv_appwidget_2, "<2위> "+rankArr[1]);
+			views.setTextViewText(R.id.tv_appwidget_3, "<3위> "+rankArr[2]);
+			views.setTextViewText(R.id.tv_appwidget_4, "<4위> "+rankArr[3]);
+			views.setTextViewText(R.id.tv_appwidget_5, "<5위> "+rankArr[4]);
 			appWidgetManager.updateAppWidget(appWidgetId, views);
 		}
 

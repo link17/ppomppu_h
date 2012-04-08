@@ -48,7 +48,7 @@ public class RealTimeThread {
 		else
 			updateRank(arr);
 
-		if (arr.size() > 0) {
+		/*if (arr.size() > 0) {
 			
 			Log.d("HONG", "searchRank");
 			String[] arrData = new String[5];
@@ -67,6 +67,7 @@ public class RealTimeThread {
 			intent.getExtras().putIntArray(AppWidgetManager.EXTRA_APPWIDGET_IDS,appWidgetIds);
 			mContext.sendBroadcast(intent);
 		}
+		*/
 	}
 
 	private boolean isRankData() {
@@ -99,7 +100,7 @@ public class RealTimeThread {
 			String titleRanking = getRanking(i);
 			values.put(titleRanking, xmlData.d_title);
 
-			Log.d("HONG", "title = " + xmlData.d_title);
+			
 
 			if (i == 4)
 				break;
@@ -113,7 +114,7 @@ public class RealTimeThread {
 
 	private void updateRank(ArrayList<XmlData> arr) {
 		ContentValues values = new ContentValues();
-
+		Log.d("HONG", "updateRank");
 		for (int i = 0; i < arr.size(); i++) {
 
 			XmlData xmlData = arr.get(i);
@@ -121,6 +122,8 @@ public class RealTimeThread {
 			String titleRanking = getRanking(i);
 			values.put(titleRanking, xmlData.d_title);
 
+			
+			
 			if (i == 4)
 				break;
 
