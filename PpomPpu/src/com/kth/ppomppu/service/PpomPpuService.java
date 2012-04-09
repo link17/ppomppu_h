@@ -89,6 +89,8 @@ public class PpomPpuService extends Service {
 
 	private void actionFun(Intent intent) {
 
+		Log.d("HONG", "actionFun");
+		
 		if (intent != null) {
 			String action = intent.getAction();
 

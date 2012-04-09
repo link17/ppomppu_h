@@ -123,6 +123,8 @@ public class RealTimeThread {
 			values.put(titleRanking, xmlData.d_title);
 
 			
+			Log.d("HONG", "순위 "+(i+1)+"  "+xmlData.d_title);
+			
 			
 			if (i == 4)
 				break;

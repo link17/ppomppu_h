@@ -23,7 +23,7 @@ public class PpomppuAppWidget extends AppWidgetProvider {
 	public static String APPWIDGET_ACION = "com.kth.appwidget.action.UPDATE_RANK";
 	public static String RANK_KEY = "rank_key";
 	private int[] mAppId;
-	private ContentObserver calendarInstancesObserver;
+	private ContentObserver realtimeInstancesObserver;
 	
 	public PpomppuAppWidget() {
 		// TODO Auto-generated constructor stub
@@ -47,24 +47,21 @@ public class PpomppuAppWidget extends AppWidgetProvider {
 
 	
 	private void registerContentObserver(final Context context) {  
-	    if (calendarInstancesObserver == null) {  
+	    if (realtimeInstancesObserver == null) {  
 	        final ComponentName name = new ComponentName(context, this.getClass());  
 	  
-	        calendarInstancesObserver = new ContentObserver(new Handler()) {  
+	        realtimeInstancesObserver = new ContentObserver(new Handler()) {  
 	            @Override  
 	            public void onChange(boolean selfChange) {  
-	            	Log.d("HONG", "onChange  " + selfChange);
-	            	
+	            	Log.d("HONG", "onChange");
 	                AppWidgetManager m = AppWidgetManager.getInstance(context);  
 	                int[] ids = m.getAppWidgetIds(name);  
 	                onUpdate(context, m, ids);  
 	            }  
 	        };  
 	    }  
-	    String uriString = "content://com.android.calendar";  
-	    Uri instancesUri = Uri.parse(uriString);  
 	    ContentResolver cr = context.getContentResolver();  
-	    cr.registerContentObserver(PpomppuContentProvider.REALTIME_URI, true, calendarInstancesObserver);  
+	    cr.registerContentObserver(PpomppuContentProvider.REALTIME_URI, true, realtimeInstancesObserver);  
 	}  
 	
 	@Override

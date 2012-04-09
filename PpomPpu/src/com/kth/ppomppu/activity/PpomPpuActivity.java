@@ -108,7 +108,7 @@ public class PpomPpuActivity extends Activity implements Constants {
 		// TODO Auto-generated method stub
 		super.onDestroy();
 		
-		mAlarmManager.cancel(mPendingIntent);
+		//mAlarmManager.cancel(mPendingIntent);
 		getContentResolver().unregisterContentObserver(mRealTimeContentObserver);
 		getContentResolver().unregisterContentObserver(mShopingContentObserver);
 	}

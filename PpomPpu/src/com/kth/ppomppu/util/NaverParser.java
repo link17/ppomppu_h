@@ -74,7 +74,7 @@ public class NaverParser {
 						xmlData.d_title = titleSrc;
 						
 						m_xmlData.add(xmlData);
-						
+						Log.d("HONG", "xml data "+xmlData.d_title);
 					}
 					
 					break;
@@ -88,7 +88,7 @@ public class NaverParser {
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			Log.i("NET", "Parsing Failed!");
+			Log.i("HONG", "Parsing Failed! exception = "+e.getMessage());
 		}	
 		return m_xmlData;
 	}
