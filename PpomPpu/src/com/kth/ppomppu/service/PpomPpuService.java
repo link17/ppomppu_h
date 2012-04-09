@@ -12,7 +12,18 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
-
+/**
+ * 
+ * @author link17 (홍거)
+ * @deprecated
+ *  - Activity 에 의존된 쓰레드가 아닌 화면과 별개에 백단 작업을 위한 클래스.
+ *  - 두개의 핸들러 쓰레드 (mRealtimeThread,mShopingThread)가 돌고 있다.
+ *  - 현재 바인더 객체는 사용되지 않고 있다.
+ *  - 액티비티가 실행해주고 알람매니저를 통해 3초에 한번씩 불리고 있지만 이형태가 아닌 TimerTask를 이용하여 자체적으로 이용하는 게 효율적으로 생각됨.
+ *  - 각각의 쓰레드에서 급상승어 검색과 쇼핑검색어를 넣어주어 검색을 해주는 형태이다.
+ *  
+ *
+ */
 public class PpomPpuService extends Service {
 
 	public static String REALTIME_ACTION = "com.kth.realtime.action";

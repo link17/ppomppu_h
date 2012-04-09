@@ -45,7 +45,7 @@ public class PpomppuAppWidget extends AppWidgetProvider {
 
 	}
 
-	
+	// 급상승어 컨텐트옵저버 등록함으로 DB에서 값이 변경시 호출된다.
 	private void registerContentObserver(final Context context) {  
 	    if (realtimeInstancesObserver == null) {  
 	        final ComponentName name = new ComponentName(context, this.getClass());  
@@ -54,8 +54,13 @@ public class PpomppuAppWidget extends AppWidgetProvider {
 	            @Override  
 	            public void onChange(boolean selfChange) {  
 	            	Log.d("HONG", "onChange");
-	                AppWidgetManager m = AppWidgetManager.getInstance(context);  
-	                int[] ids = m.getAppWidgetIds(name);  
+	            	// 위젯매니저를 얻어온다.
+	                AppWidgetManager m = AppWidgetManager.getInstance(context);
+	                
+	                // 현재 위젯에 이름으로 ID를 얻어온다.
+	                int[] ids = m.getAppWidgetIds(name);
+	                
+	                // 얻어온 아이디로 위제를 업데이트 해준다.
 	                onUpdate(context, m, ids);  
 	            }  
 	        };  

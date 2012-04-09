@@ -4,21 +4,23 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <LinearLayout
+    <LinearLayout android:background="#49B919"
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <TextView
-           	android:textColor="#000000"
+            android:background="@drawable/textlines"
+           	android:textColor="#ffffff"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:text="@string/title_real_time_search_title" />
 
         <TextView
-            android:textColor="#000000"
+            android:background="@drawable/textlines"
+            android:textColor="#ffffff"
             android:id="@+id/tv_appwidget_1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -26,7 +28,8 @@
             android:text="@string/title_real_time_search_title" />
 
         <TextView
-            android:textColor="#000000"
+            android:background="@drawable/textlines"
+            android:textColor="#ffffff"
             android:id="@+id/tv_appwidget_2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -34,7 +37,8 @@
             android:text="@string/title_real_time_search_title" />
 
         <TextView
-            android:textColor="#000000"
+            android:background="@drawable/textlines"
+            android:textColor="#ffffff"
             android:id="@+id/tv_appwidget_3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -42,7 +46,8 @@
             android:text="@string/title_real_time_search_title" />
 
         <TextView
-            android:textColor="#000000"
+            android:background="@drawable/textlines"
+            android:textColor="#ffffff"
             android:id="@+id/tv_appwidget_4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -50,12 +55,19 @@
             android:text="@string/title_real_time_search_title" />
 
         <TextView
-            android:textColor="#000000"
+            android:background="@drawable/textlines"
+            android:textColor="#ffffff"
             android:id="@+id/tv_appwidget_5"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="5dp"
             android:text="@string/title_real_time_search_title" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="정지" />
 
 </LinearLayout>

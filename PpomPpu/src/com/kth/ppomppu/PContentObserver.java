@@ -10,6 +10,16 @@ import android.util.Log;
 
 import com.kth.ppomppu.database.PpomppuContentProvider;
 
+/**
+ * 
+ * @author link17 (홍거)
+ * @deprecated
+ *  - 뽐뿌 DB에 값이 변경될 때 onChange 메소드가 호출된다.
+ *  - context가 있는 객체에서는 모두 등록이 가능하다.
+ *  - mMode를 통해서 어떤 테이블에 값이 변경되었는지 구별한다.
+ *  
+ *
+ */
 public class PContentObserver extends ContentObserver {
 
 	Handler mHandler;

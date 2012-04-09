@@ -86,12 +86,19 @@ public class PpomPpuActivity extends Activity implements Constants {
 
     private void settingRealtimeAlarm() {
 
+    	// 알람매니저 얻어옴.
         mAlarmManager = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
 
+        // 뽐뿌서비스 인텐트 생성.
         Intent intent = new Intent(this, PpomPpuService.class);
+        // 실시간 급상승어 구동 액션 설정.
         intent.setAction(PpomPpuService.REALTIME_ACTION);
+        
+        // 팬딩 인텐트 생성 
         mPendingIntent = PendingIntent.getService(this, 200, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
+        
+        // 알람 매니저에 팬딩인텐트 설정. 간격 3초.
         mAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 3000, mPendingIntent);
     }
     
@@ -113,12 +120,14 @@ public class PpomPpuActivity extends Activity implements Constants {
 		getContentResolver().unregisterContentObserver(mShopingContentObserver);
 	}
 	
+	// 컨텐트 옵저버를 통해서 DB가 변경시 값을 받아온다.
 	private Handler mHandler = new Handler(){
 	
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
+			
 			
 			Bundle bnd = msg.getData();
 			String[] dataArr = bnd.getStringArray("data");

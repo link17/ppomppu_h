@@ -44,6 +44,7 @@ public class PpomppuDbHelper extends SQLiteOpenHelper {
 
 	}
 
+	// 데이터베이스 생성 및 테이블 생성.
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub

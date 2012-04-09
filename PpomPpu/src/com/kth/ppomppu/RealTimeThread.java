@@ -16,7 +16,13 @@ import com.kth.ppomppu.database.PpomppuContentProvider;
 import com.kth.ppomppu.database.PpomppuDbHelper;
 import com.kth.ppomppu.util.NaverParser;
 import com.kth.ppomppu.util.XmlData;
-
+/**
+ * 
+ * @author link17
+ * @deprecated
+ * - 네이버 오픈Api를 이용하여 실시간 급상어를 얻어 DB에 넣어주는 클래스.
+ *  
+ */
 public class RealTimeThread {
 
 	private Context mContext;
